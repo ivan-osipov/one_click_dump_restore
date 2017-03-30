@@ -1,0 +1,65 @@
+group 'nodomain'
+version '0.1.0'
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'distribution'
+
+sourceCompatibility = 1.8
+version = 1.0
+mainClassName = 'DumpRestoreApp'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.postgresql:postgresql:9.4.1211'
+}
+
+task fatJar(type: Jar) {
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    manifest {
+        attributes 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+        attributes 'Main-Class': mainClassName
+    }
+    exclude '**/*.reg'
+    exclude '**/*.bat'
+    exclude '**/*.ico'
+}
+
+distZip.dependsOn = [fatJar, startScripts]
+startScripts.dependsOn = [fatJar]
+startScripts.onlyIf {false}
+
+distributions {
+    main {
+        baseName = project.name
+        contents {
+            from { fatJar }
+            from { "$buildDir/resources/main/installHere.bat" }
+            from { "$buildDir/resources/main/run.bat" }
+            from { "$buildDir/resources/main/icon.ico" }
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': mainClassName
+        )
+    }
+}

@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/ivan-osipov/one_click_dump_restore.svg?branch=master)](https://travis-ci.org/ivan-osipov/one_click_dump_restore)
