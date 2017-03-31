@@ -40,6 +40,8 @@ task fatJar(type: Jar) {
 }
 
 distZip.dependsOn = [fatJar, startScripts]
+distTar.dependsOn = [fatJar, startScripts]
+assembleDist.dependsOn = [fatJar, startScripts]
 startScripts.dependsOn = [fatJar]
 startScripts.onlyIf {false}
 
@@ -51,6 +53,7 @@ distributions {
             from { "$buildDir/resources/main/installHere.bat" }
             from { "$buildDir/resources/main/run.bat" }
             from { "$buildDir/resources/main/icon.ico" }
+            from { "$buildDir/resources/main/uninstall.bat" }
         }
     }
 }
