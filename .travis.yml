@@ -18,4 +18,4 @@ branches:
 before_install:
  - chmod +x gradlew
 
-script: ./gradlew assembleDist
+script: ./gradlew distZip
