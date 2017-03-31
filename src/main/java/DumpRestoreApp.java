@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -39,8 +38,12 @@ public class DumpRestoreApp {
             System.err.println("Dump not found");
             return;
         }
+        if (args.length > 1) {
+            System.err.println("An incorrect set of params. Required a dump path only. If the path has spaces, please, use quotes.");
+            return;
+        }
 
-        String dumpPath = String.join("", Arrays.asList(args));
+        String dumpPath = args[0];
         if (fileDoesNotExists(dumpPath)) {
             return;
         }
@@ -124,7 +127,7 @@ public class DumpRestoreApp {
     }
 
     private static void waitingPress() {
-        System.out.print("Press any key to continue...");
+        System.out.print("Press enter to continue...");
         try {
             System.in.read();
         } catch (IOException e) {

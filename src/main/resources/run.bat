@@ -1,1 +1,1 @@
-java -jar "%~dp0one_click_dump_restore-1.0.jar" %1
+java -jar "%~dp0one_click_dump_restore-1.0.jar" %*
