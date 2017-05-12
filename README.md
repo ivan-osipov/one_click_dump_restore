@@ -5,7 +5,8 @@ One click dump restore
 ---
 The application for windows users.
 If you have many .dump or .backup files which you need to restore often instead some database, it's well for you.
-After installation you will can restore your db by one click
+After installation you will can restore your db by one click  
+[Download](https://github.com/ivan-osipov/one_click_dump_restore/releases)
 
 **Installation**
 
