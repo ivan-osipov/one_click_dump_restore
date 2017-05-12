@@ -15,14 +15,15 @@ After installation you will can restore your db by one click
 4. (Warning: Here you will change your Windows' register)
 Run file **installHere.bat** (naturally for Windows only)
 5. Change default settings for your db inside one_click_dump_restore-1.0.jar (app.properties)
-6. When you do right mouse click on *.dump or *.backup file you will see new item of menu **Restore DB**
+6. When you do right mouse click on *.dump or *.backup file you will see new item of menu **Restore DB** as you can see on the picture bellow  
+![Example Of Work](/example_of_work_screen.png)
 
-**Default Settings**
+**Default Settings** (look Instalation's step №5)
 
-db.type=POSTGRES
-db.host=localhost
-db.port=5432
-db.user=postgres
-db.password=postgres
-db.name=example
-db.utils.home=C:/Program Files/PostgreSQL/9.5/bin/
+db.type=POSTGRES  
+db.host=localhost  
+db.port=5432  
+db.user=postgres  
+db.password=postgres  
+db.name=example  
+db.utils.home=C:/Program Files/PostgreSQL/9.5/bin/  
