@@ -59,6 +59,9 @@ public class PostgresAdapter implements DbAdapter {
     @Override
     public int getConflictsAmount(RestoreToolConfig config) {
         try (Connection connection = createConnection(config)) {
+            if(connection == null) {
+                throw new IllegalStateException("Db connection is not established. Check properties");
+            }
             PreparedStatement statement = connection.prepareStatement(FETCH_CONFLICTS_AMOUNT_QUERY);
             statement.setString(1, config.getDbName());
 

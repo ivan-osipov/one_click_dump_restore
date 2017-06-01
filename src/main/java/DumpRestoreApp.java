@@ -23,9 +23,14 @@ public class DumpRestoreApp {
 
     public static void main(String[] args) {
         System.out.println("=== Dump Restore App ===");
-        initDbAdapterRegistry();
-        launch(args);
-        waitingPress();
+        try {
+            initDbAdapterRegistry();
+            launch(args);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        } finally {
+            waitingPress();
+        }
     }
 
     private static void initDbAdapterRegistry() {
